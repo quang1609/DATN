@@ -14,3 +14,4 @@
       
 ### Download template   
 https://adminlte.io/
+composer create-project --prefer-dist laravel/laravel:^7.0 blog
