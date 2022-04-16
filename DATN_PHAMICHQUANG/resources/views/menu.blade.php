@@ -95,7 +95,7 @@
 
             @include('products.list')
 
-            {!! $products->links() !!}
+            {{-- {!! $products->links() !!} --}}
         </div>
     </div>
 @endsection

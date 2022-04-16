@@ -15,8 +15,13 @@
                         </a>
 
                         <span class="stext-105 cl3">
-							{!!  \App\Helpers\Helper::price($product->price, $product->price_sale)  !!} $
+							${!!  \App\Helpers\Helper::price($product->price, $product->price_sale)  !!} 
                         </span>
+                    </div>
+                    <div class="block2-txt-child2 flex-r p-t-3">
+                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100">
+                            <i class="zmdi zmdi-favorite"></i>
+                        </a>
                     </div>
                 </div>
             </div>

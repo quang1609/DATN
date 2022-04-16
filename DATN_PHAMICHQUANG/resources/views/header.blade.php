@@ -35,7 +35,18 @@
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
-
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                         data-notify="{{ !is_null(\Session::get('hearts')) ? count(\Session::get('hearts')) : 0 }}">
+                         <i class="zmdi zmdi-favorite"></i>
+                    </div>
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                        @if(Auth::user())
+                            <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>
+                            <a href="{{route('logout')}}" type="button" class="btn btn-secondary">Đăng xuất</a>
+                        @else
+                            <a href="{{route('login')}}" type="button" class="btn btn-secondary">Đăng nhập</a>
+                        @endif
+                    </div>
                 </div>
             </nav>
         </div>
@@ -89,11 +100,12 @@
                 <img src="/template/images/icons/icon-close2.png" alt="CLOSE">
             </button>
 
-            <form class="wrap-search-header flex-w p-l-15">
+            <form class="wrap-search-header flex-w p-l-15" action="{{ route('search') }}" method="post">
                 <button class="flex-c-m trans-04">
                     <i class="zmdi zmdi-search"></i>
                 </button>
                 <input class="plh3" type="text" name="search" placeholder="Search...">
+                @csrf
             </form>
         </div>
     </div>

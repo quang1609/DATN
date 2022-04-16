@@ -75,7 +75,7 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-							{!! \App\Helpers\Helper::price($product->price, $product->price_sale) !!}
+							${!! \App\Helpers\Helper::price($product->price, $product->price_sale) !!}
 						</span>
 
                         <p class="stext-102 cl3 p-t-23">
@@ -86,27 +86,25 @@
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
-                                    <form action="/add-cart" method="post">
+                                    <form action="" method="post">
                                         @if ($product->price !== NULL)
                                             <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-minus"></i>
                                                 </div>
 
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                       name="num_product" value="1">
-
+                                                <input class="mtext-104 cl3 txt-center num-product" id="num_product" type="number" name="num_product" value="1">
+                                                {{-- <input class="mtext-104 cl3 txt-center num-product" id="num-product"> --}}
                                                 <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
 
 
-                                            <button type="submit"
-                                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                                            <a href="javascript:void(0)" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" id="add-cart">
                                                 Add to cart
-                                            </button>
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            </a>
+                                            <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
                                         @endif
                                         @csrf
                                     </form>
@@ -123,21 +121,6 @@
                                     <i class="zmdi zmdi-favorite"></i>
                                 </a>
                             </div>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                               data-tooltip="Google Plus">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -166,7 +149,7 @@
                     <div class="tab-content p-t-43">
                         <!-- - -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
-                            <div class="how-pos2 p-lr-15-md">
+                            <div class="how-pos2 p-lr-15-md" style="margin-left: 330px;">
                                 <p class="stext-102 cl6">
                                     {!! $product->content !!}
                                 </p>
@@ -344,4 +327,26 @@
         </div>
     </section>
 
+@endsection
+
+@section('script')
+    <script>
+        $('#add-cart').on('click', function(){
+            var product_id = $('#product_id').val();
+            var num_product = $('#num_product').val();
+            console.log(num_product);
+            $.ajax({
+                url : "{{ route('add-cart') }}",
+                data : {
+                    'product_id' : product_id,
+                    'num_product' : num_product
+                },
+                type : 'POST',
+                dataType : 'json',
+                success : function(result){
+                    
+                    }   
+                });
+        });
+    </script>
 @endsection

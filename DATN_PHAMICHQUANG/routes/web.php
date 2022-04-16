@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\UserController;
 use App\Http\Controllers\Admin\MainController;
@@ -70,13 +71,21 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('home');
 Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);
+
+// login
+Route::get('login', [App\Http\Controllers\LoginUserController::class, 'index'])->name('login');
+Route::post('login', [App\Http\Controllers\LoginUserController::class, 'login']);
+Route::get('register', [App\Http\Controllers\LoginUserController::class, 'registerForm'])->name('register');
+Route::post('register', [App\Http\Controllers\LoginUserController::class, 'register']);
+Route::get('logout', [App\Http\Controllers\LoginUserController::class, 'logout'])->name('logout');
 
 Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index']);
+Route::post('search', [App\Http\Controllers\MainController::class, 'search'])->name('search');
 
-Route::post('add-cart', [App\Http\Controllers\CartController::class, 'index']);
+Route::post('add-cart', [App\Http\Controllers\CartController::class, 'index'])->name('add-cart');
 Route::get('carts', [App\Http\Controllers\CartController::class, 'show']);
 Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update']);
 Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove']);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\Slider\SliderService;
 use App\Http\Services\Menu\MenuService;
 use App\Http\Services\Product\ProductService;
+use App\Models\Product;
 
 class MainController extends Controller
 {
@@ -42,5 +43,16 @@ class MainController extends Controller
         }
 
         return response()->json(['html' => '' ]);
+    }
+
+    public function search(Request $request)
+    {
+        $product = Product::where('name','like', '%'.$request->search.'%')->get();
+        
+        return view('menu', [
+            'title' => "kết quả của: " . $request->search,
+            'products' => $product,
+            'menu'  => ""
+        ]);
     }
 }

@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'active'
     ];
 
     /**
@@ -49,7 +50,8 @@ class User extends Authenticatable
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'role_id' => 2
+            'role_id' => 2,
+            'active' => 0
         ]);
     }
 
