@@ -36,7 +36,7 @@
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="{{ !is_null(\Session::get('hearts')) ? count(\Session::get('hearts')) : 0 }}">
+                         data-notify="{{ !is_null(\Session::get('wishlist')) ? count(\Session::get('wishlist')) : 0 }}">
                          <i class="zmdi zmdi-favorite"></i>
                     </div>
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">

@@ -19,7 +19,7 @@
                         </span>
                     </div>
                     <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100">
+                        <a href="javascript:void(0)" class="btn-addwish-b2 dis-block pos-relative fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 tooltip100 addwishlist" id="add_wishlist" data-id={{ $product->id }}>
                             <i class="zmdi zmdi-favorite"></i>
                         </a>
                     </div>

@@ -12,7 +12,7 @@ class CartController extends Controller
 
     public function __construct(CartService $cartService)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('addwishlist');
         $this->cartService = $cartService;
     }
 
@@ -73,5 +73,25 @@ class CartController extends Controller
     public function Checkout()
     {
         return redirect()->back();
+    }
+
+    public function addwishlist(Request $request)
+    {   
+        if($request->ajax()){
+            $wishlist = Session::get('wishlist');
+            if(is_null($wishlist)){
+                Session::put('wishlist',[
+                    'id' => $request->product_id
+                ]);
+            } else {
+                $wishlist = array_merge($wishlist,[
+                    'id' => $request->product_id
+                ]);
+                Session::put('wishlist', $wishlist);
+            }
+
+            return response()->json(['data' => $request->product_id]);
+        }
+        // return response()->json(['data' => $request->product_id]);
     }
 }

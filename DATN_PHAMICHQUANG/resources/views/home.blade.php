@@ -68,3 +68,18 @@
         </div>
     </section>
 @endsection
+@section('script')
+    <script>
+        $('.addwishlist').on('click', function(){
+            var product_id = $(this).attr('data-id');
+            $.ajax({
+                url: "{{route('addwishlist')}}",
+                data: {'product_id' : product_id},
+                type: 'GET',
+                success: function($data){
+                    console.log($data);
+                }
+            });
+        });
+    </script>
+@endsection
