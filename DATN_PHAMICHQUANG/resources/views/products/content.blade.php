@@ -86,7 +86,7 @@
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
-                                    <form action="" method="post">
+                                    <form action="/add-cart" method="post">
                                         @if ($product->price !== NULL)
                                             <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -101,9 +101,10 @@
                                             </div>
 
 
-                                            <a href="javascript:void(0)" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" id="add-cart">
+                                            <button type="submit"
+                                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
                                                 Add to cart
-                                            </a>
+                                            </button>
                                             <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
                                         @endif
                                         @csrf
@@ -330,23 +331,4 @@
 @endsection
 
 @section('script')
-    <script>
-        $('#add-cart').on('click', function(){
-            var product_id = $('#product_id').val();
-            var num_product = $('#num_product').val();
-            console.log(num_product);
-            $.ajax({
-                url : "{{ route('add-cart') }}",
-                data : {
-                    'product_id' : product_id,
-                    'num_product' : num_product
-                },
-                type : 'POST',
-                dataType : 'json',
-                success : function(result){
-                    
-                    }   
-                });
-        });
-    </script>
 @endsection

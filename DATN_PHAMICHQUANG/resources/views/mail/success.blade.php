@@ -1,1 +1,1 @@
-<h1>Có một đơn đặt hàng </h1>
+<h1>Đơn hàng của bạn tại Coza Store đã đặt thành công </h1>

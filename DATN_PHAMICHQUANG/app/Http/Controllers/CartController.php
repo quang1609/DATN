@@ -12,6 +12,7 @@ class CartController extends Controller
 
     public function __construct(CartService $cartService)
     {
+        $this->middleware('auth');
         $this->cartService = $cartService;
     }
 
@@ -55,7 +56,22 @@ class CartController extends Controller
     {
         $this->cartService->addCart($request);
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
+    public function CheckoutForm()
+    {
+        $products = $this->cartService->getProduct();
+
+        return view('carts.checkout',[
+            'title' => 'Giỏ Hàng',
+            'products' => $products,
+            'carts' => Session::get('carts')
+        ]);
+    }
+
+    public function Checkout()
+    {
+        return redirect()->back();
+    }
 }

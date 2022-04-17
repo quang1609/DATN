@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use Faker\Guesser\Name;
 
 Route::get('admin/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/login', [LoginController::class, 'store']);
@@ -90,4 +91,5 @@ Route::get('carts', [App\Http\Controllers\CartController::class, 'show']);
 Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update']);
 Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove']);
 Route::get('carts/clear', [App\Http\Controllers\CartController::class, 'clear']);
-Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
+Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart'])->name('checkoutPost');
+Route::get('checkout', [App\Http\Controllers\CartController::class, 'CheckoutForm'])->name('checkout');
