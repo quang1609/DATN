@@ -81,6 +81,11 @@ class CartService
             $carts = Session::get('carts');
             if (is_null($carts))
                 return false;
+            foreach ($carts as $key => $value) {
+                $product = Product::where('id', $key)->first();
+                $product->quantity = $product->quantity - (int)$value;
+                $product->save();
+            }
 
             $customer = Customer::create([
                 'name' => $request->input('name'),

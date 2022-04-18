@@ -35,10 +35,17 @@
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" id="show_heart"
-                         data-notify="{{ \App\Models\Wishlist::where('user_id', Auth::user()->id)->count() }}">
-                         <a href="{{route('wishlist')}}" class="zmdi zmdi-favorite"></a>
-                    </div>
+                    @if(Auth::check())
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" id="show_heart"
+                            data-notify="{{ \App\Models\Wishlist::where('user_id', Auth::user()->id)->get()->count() }}">
+                            <a href="{{route('wishlist')}}" class="zmdi zmdi-favorite"></a>
+                        </div>
+                    @else 
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" id="show_heart"
+                            data-notify="0">
+                            <a href="{{route('wishlist')}}" class="zmdi zmdi-favorite"></a>
+                        </div>
+                    @endif
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
                         @if(Auth::user())
                             <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>

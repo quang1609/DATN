@@ -45,7 +45,10 @@
                     </div>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label>Số lượng </label>
+                <input name="quantity" class="form-control" value="{{ $product->quantity }}">
+            </div>
             <div class="form-group">
                 <label>Mô Tả </label>
                 <textarea name="description" class="form-control">{{ $product->description }}</textarea>

@@ -37,7 +37,7 @@ class ProductAdminService
         $isValidPrice = $this->isValidPrice($request);
         if ($isValidPrice === false) return false;
 
-        try {
+        
             $request->except('_token');
             $items = $request->all();
             if (!empty($request->thumb)) 
@@ -47,7 +47,8 @@ class ProductAdminService
                 //$request->file('thumb')->storeAs('public/images/products', $avatar_name);
                 $items['thumb'] = $avatar_name;
             }
-            
+
+            $items['quantity'] = $request->quantity;
             $items['name'] = $request->name;
             $items['description'] = $request->description;
             $items['content'] = $request->content;
@@ -57,11 +58,7 @@ class ProductAdminService
             $items['active'] = $request->active;
             Product::create($items);
             Session::flash('success', 'Thêm Sản phẩm thành công');
-        } catch (\Exception $err) {
-            Session::flash('error', 'Thêm Sản phẩm lỗi');
-            \Log::info($err->getMessage());
-            return  false;
-        }
+        
 
         return  true;
     }
@@ -87,6 +84,7 @@ class ProductAdminService
                 $product->thumb = $avatar_name;
             }
             
+            $product->quantity = $request->quantity;
             $product->name = $request->name;
             $product->description = $request->description;
             $product->content = $request->content;

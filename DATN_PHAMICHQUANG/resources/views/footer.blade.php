@@ -127,7 +127,7 @@
                             Lightweight Jacket
                         </h4>
 
-                        <span class="mtext-106 cl2">
+                        <span class="mtext-108 cl2">
 								$58.79
 							</span>
 

@@ -70,17 +70,19 @@
 
                         @include('admin.alert')
 
-                        <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                        <h4 class="cl2 js-name-detail p-b-14" style="font-weight: bold;font-size: 24px">
                             {{ $title }}
                         </h4>
 
-                        <span class="mtext-106 cl2">
-							${!! \App\Helpers\Helper::price($product->price, $product->price_sale) !!}
-						</span>
-
-                        <p class="stext-102 cl3 p-t-23">
+                        <p class="cl2">
+							Giá: ${!! \App\Helpers\Helper::price($product->price, $product->price_sale) !!}
+						</p>
+                        <p class="cl2" style="margin-top: 5px;">
+							Có sẵn : {{ $product->quantity }} sản phẩm
+						</p>
+                        {{-- <p class="stext-102 cl3 p-t-23">
                             {{ $product->description }}
-                        </p>
+                        </p> --}}
 
                         <!--  -->
                         <div class="p-t-33">
@@ -114,7 +116,7 @@
                         </div>
 
                         <!--  -->
-                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+                        {{-- <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                             <div class="flex-m bor9 p-r-10 m-r-11">
                                 <a href="#"
                                    class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
@@ -122,7 +124,7 @@
                                     <i class="zmdi zmdi-favorite"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
