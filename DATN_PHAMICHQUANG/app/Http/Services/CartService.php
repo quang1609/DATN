@@ -135,9 +135,14 @@ class CartService
         return Cart::insert($data);
     }
 
-    public function getCustomer()
+    public function getAllCustomer()
     {
         return Customer::orderByDesc('id')->paginate(15);
+    }
+
+    public function getCustomer($status)
+    {
+        return Customer::where('status', $status)->orderByDesc('id')->paginate(15);
     }
 
     public function getProductForCart($customer)

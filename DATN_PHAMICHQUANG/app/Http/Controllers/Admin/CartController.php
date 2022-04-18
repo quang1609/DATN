@@ -19,7 +19,23 @@ class CartController extends Controller
     {
         return view('admin.carts.customer', [
             'title' => 'Danh Sách Đơn Đặt Hàng',
-            'customers' => $this->cart->getCustomer()
+            'customers' => $this->cart->getAllCustomer()
+        ]);
+    }
+
+    public function Pending($status = 0)
+    {
+        return view('admin.carts.customer', [
+            'title' => 'Danh Sách Đơn Đặt Hàng',
+            'customers' => $this->cart->getCustomer($status)
+        ]);
+    }
+
+    public function CusStatus($status)
+    {
+        return view('admin.carts.customer', [
+            'title' => 'Danh Sách Đơn Đặt Hàng',
+            'customers' => $this->cart->getCustomer($status)
         ]);
     }
 
@@ -33,4 +49,23 @@ class CartController extends Controller
             'carts' => $carts
         ]);
     }
+
+    public function Accept($id)
+    {
+        $customer = Customer::find($id);
+        $customer->status = 1;
+        $customer->save();
+
+        return redirect()->back()->with('success','Đơn hàng đã được chấp nhận');
+    }
+
+    public function Cancel($id)
+    {
+        $customer = Customer::find($id);
+        $customer->status = 2;
+        $customer->save();
+
+        return redirect()->back()->with('success','Đơn hàng đã bị hủy');
+    }
+
 }

@@ -67,7 +67,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('upload/services', [\App\Http\Controllers\Admin\UploadController::class, 'store']);
 
         #Cart
-        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
+        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index'])->name('customers');
+        Route::get('customers/pending', [\App\Http\Controllers\Admin\CartController::class, 'Pending'])->name('customers.pending'); 
+        Route::get('customers/{status}', [\App\Http\Controllers\Admin\CartController::class, 'CusStatus']);
+        Route::get('customers/accept/{id}', [\App\Http\Controllers\Admin\CartController::class, 'accept'])->name('cart.accept');
+        Route::get('customers/cancel/{id}', [\App\Http\Controllers\Admin\CartController::class, 'cancel'])->name('cart.cancel');
         Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
     });
 });

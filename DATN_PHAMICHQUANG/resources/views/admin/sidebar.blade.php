@@ -39,7 +39,7 @@
                     <a href="#" class="nav-link">
                         
                         <i class="fas fa-user nav-icon"></i>
-                        <p> Người dùng
+                        <p> Người Dùng
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -47,7 +47,7 @@
                         <li class="nav-item">
                             <a href="/admin/listUser" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách người dùng</p>
+                                <p>Danh Sách Người Dùng</p>
                             </a>
                         </li>
                     </ul>
@@ -135,10 +135,27 @@
                         <li class="nav-item">
                             <a href="/admin/customers" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Danh Sách Đơn Hàng</p>
+                                <p>Tất Cả Đơn Hàng</p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{route('customers.pending')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Đơn Hàng Chờ Duyệt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/customers/1" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Đơn Hàng Đã Duyệt</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/customers/2" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Đơn Hàng Đã Hủy</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

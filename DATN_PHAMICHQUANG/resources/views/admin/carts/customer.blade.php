@@ -1,15 +1,22 @@
 @extends('admin.main')
 
 @section('content')
+{{-- @php
+    if(request()->routeIs('customers')){
+        echo (1);
+    } else {
+        echo (2);
+    }
+@endphp --}}
     <table class="table">
         <thead>
         <tr>
-            <th style="width: 50px">ID</th>
-            <th>Tên Khách Hàng</th>
-            <th>Số Điện Thoại</th>
-            <th>Email</th>
-            <th>Ngày Đặt hàng</th>
-            <th style="width: 100px">&nbsp;</th>
+            <th style="width: 5%">ID</th>
+            <th style="width: 20%">Tên Khách Hàng</th>
+            <th style="width: 20%">Số Điện Thoại</th>
+            <th style="width: 25%">Email</th>
+            <th style="width: 20%">Ngày Đặt hàng</th>
+            <th style="width: 10%">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -20,15 +27,25 @@
                 <td>{{ $customer->phone }}</td>
                 <td>{{ $customer->email }}</td>
                 <td>{{ $customer->created_at }}</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}">
-                        <i class="fas fa-eye"></i>
-                    </a>
-                    {{-- <a href="#" class="btn btn-danger btn-sm"
-                       onclick="removeRow({{ $customer->id }}, '/admin/customers/destroy')">
-                        <i class="fas fa-trash"></i>
-                    </a> --}}
-                </td>
+                @if (request()->routeIs('customers') || request()->routeIs('customers.pending'))
+                    <td>
+                        <a href="{{route('cart.accept', $customer->id)}}" class="btn btn-success btn-sm">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </a>
+                        <a href="{{route('cart.cancel', $customer->id)}}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                @else 
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>
