@@ -101,12 +101,16 @@
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
+                                            @if ($product->quantity == 0)
+                                                <a href="javascript:void(0)" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 btn-danger p-lr-15 trans-04" id="btn_endQty">
+                                                    Add to cart
+                                                </a>
+                                            @else
+                                                <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                                                    Add to cart
+                                                </button>
+                                            @endif
 
-
-                                            <button type="submit"
-                                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
-                                                Add to cart
-                                            </button>
                                             <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
                                         @endif
                                         @csrf
@@ -333,4 +337,10 @@
 @endsection
 
 @section('script')
+    <script>
+        $('#btn_endQty').click(function(){
+            console.log(1);
+            alert('Sản phẩm hiện tại đã hết');
+        });
+    </script>
 @endsection
