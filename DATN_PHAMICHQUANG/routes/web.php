@@ -93,4 +93,6 @@ Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 're
 Route::get('carts/clear', [App\Http\Controllers\CartController::class, 'clear']);
 Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart'])->name('checkoutPost');
 Route::get('checkout', [App\Http\Controllers\CartController::class, 'CheckoutForm'])->name('checkout');
-Route::get('carts/wishlist', [App\Http\Controllers\CartController::class, 'addwishlist'])->name('addwishlist');
+Route::get('carts/wishlist', [App\Http\Controllers\CartController::class, 'addWishlist'])->name('addWishlist');
+Route::get('wishlist', [App\Http\Controllers\CartController::class, 'Wishlist'])->name('wishlist');
+Route::get('wishlist/delete/{id}', [App\Http\Controllers\CartController::class, 'Delete_Wishlist'])->name('deleteWishlist');

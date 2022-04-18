@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Wishlist;
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -75,23 +78,43 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function addwishlist(Request $request)
+    public function addWishlist(Request $request)
     {   
         if($request->ajax()){
-            $wishlist = Session::get('wishlist');
-            if(is_null($wishlist)){
-                Session::put('wishlist',[
-                    'id' => $request->product_id
-                ]);
-            } else {
-                $wishlist = array_merge($wishlist,[
-                    'id' => $request->product_id
-                ]);
-                Session::put('wishlist', $wishlist);
-            }
+            $wishlist = new Wishlist;
+            $wishlist->user_id = Auth::user()->id;
+            $wishlist->product_id = $request->product_id;
+            $wishlist->save();
 
-            return response()->json(['data' => $request->product_id]);
+            $count = Wishlist::where('user_id', Auth::user()->id)->get()->count();
+
+            return response()->json(['data' => $wishlist, 'count' => $count]);
         }
         // return response()->json(['data' => $request->product_id]);
+    }
+
+    public function Wishlist(Request $request)
+    {
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->groupBy('product_id')->get();
+        $products = [];
+        foreach ($wishlist as $wl) 
+        {
+            $products[] = Product::where('id', $wl->product_id)->first();
+        }
+        // dd($products);
+
+        return view('carts.wishlist', [
+            'title' => 'Danh sách yêu thích',
+            'products' => $products,
+            'carts' =>  $wishlist
+        ]);
+    }
+
+    public function Delete_Wishlist(Request $request, $id)
+    {
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->where('product_id', $id)->first();
+        $wishlist->delete();
+        
+        return redirect()->back();
     }
 }

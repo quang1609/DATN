@@ -35,7 +35,7 @@
                                                 </div>
                                             </td>
                                             <td class="column-2">{{ $product->name }}</td>
-                                            <td class="column-3" name="price_end">{{ number_format($price, 0, '', '.') }}</td>
+                                            <td class="column-3" name="price_end">${{ number_format($price, 0, '', '.') }}</td>
                                             <td class="column-4">
                                                 <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                                     <div class="btn-num-product-down btn-num-product cl8 hov-btn3 trans-04 flex-c-m"  data-id="{{$product->id}}">
@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="column-5  total_pro">{{ number_format($priceEnd, 0, '', '.') }}</td>
+                                            <td class="column-5  total_pro">${{ number_format($priceEnd, 0, '', '.') }}</td>
                                             <td class="p-r-15">
                                                 <a href="/carts/delete/{{ $product->id }}">Xóa</a>
                                             </td>

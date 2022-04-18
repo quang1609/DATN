@@ -73,11 +73,12 @@
         $('.addwishlist').on('click', function(){
             var product_id = $(this).attr('data-id');
             $.ajax({
-                url: "{{route('addwishlist')}}",
+                url: "{{route('addWishlist')}}",
                 data: {'product_id' : product_id},
                 type: 'GET',
-                success: function($data){
-                    console.log($data);
+                success: function(data){
+                    console.log(data);
+                    $('#show_heart').attr('data-notify',data.count);
                 }
             });
         });
