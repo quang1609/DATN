@@ -19,9 +19,7 @@
 
                         {!! $menusHtml !!}
 
-                        <li>
-                            <a href="contact.html">Liên Hệ</a>
-                        </li>
+                        
                     </ul>
                 </div>
 
@@ -31,9 +29,9 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        <a href="/carts" class="zmdi zmdi-shopping-cart"></a>
                     </div>
                     @if(Auth::check())
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" id="show_heart"
@@ -48,7 +46,7 @@
                     @endif
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
                         @if(Auth::user())
-                            <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></i>
+                            <a href="{{route('dashboard')}}" class="fa fa-user" aria-hidden="true" style="margin-right: 10px"></a>
                             <a href="{{route('logout')}}" type="button" class="btn btn-secondary">Đăng xuất</a>
                         @else
                             <a href="{{route('login')}}" type="button" class="btn btn-secondary">Đăng nhập</a>

@@ -34,6 +34,9 @@
                         <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus="">
                     </div>
                     <div class="form-group">
+                        <input type="text" name="phone" class="form-control" placeholder="Phone" required autofocus="">
+                    </div>
+                    <div class="form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password" required autofocus="">
                     </div>
                     <div class="form-group">

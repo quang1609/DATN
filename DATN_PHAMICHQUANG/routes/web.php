@@ -86,6 +86,14 @@ Route::get('register', [App\Http\Controllers\LoginUserController::class, 'regist
 Route::post('register', [App\Http\Controllers\LoginUserController::class, 'register']);
 Route::get('logout', [App\Http\Controllers\LoginUserController::class, 'logout'])->name('logout');
 
+//dashboard
+Route::get('user/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('user/profile', [App\Http\Controllers\DashboardController::class, 'profile'])->name('user.profile');
+Route::post('user/profile', [App\Http\Controllers\DashboardController::class, 'profileUpdate'])->name('user.profile.update');
+Route::get('user/password', [App\Http\Controllers\DashboardController::class, 'password'])->name('user.password');
+Route::post('user/password', [App\Http\Controllers\DashboardController::class, 'passwordUpdate'])->name('user.password.update');
+Route::get('user/order', [App\Http\Controllers\DashboardController::class, 'order'])->name('user.order');
+
 Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index']);
 Route::post('search', [App\Http\Controllers\MainController::class, 'search'])->name('search');

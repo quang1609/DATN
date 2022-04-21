@@ -33,7 +33,7 @@ class CartController extends Controller
     {
 
         $products = $this->cartService->getProduct();
-
+        // dd($products);
         return view('carts.list', [
             'title' => 'Giỏ Hàng',
             'products' => $products,

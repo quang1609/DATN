@@ -21,10 +21,13 @@ class LoginUserController extends Controller
         if (Auth::attempt([
                 'email' => $request->input('email'),
                 'password' => $request->input('password'),
+                'role_id' => 2,
+                'active' => 0
             ])) {
+
             return redirect()->route('home');
         } else {
-            Session::flash('error', 'Email, Password không đúng');
+            Session::flash('error', 'Email, Password không đúng hoặc không đúng quyền');
 
             return redirect()->back();
         }

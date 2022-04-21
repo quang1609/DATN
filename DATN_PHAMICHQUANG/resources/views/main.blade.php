@@ -8,13 +8,17 @@
 
 <!-- Header -->
 @include('header')
-
+{{-- @php
+    
+@endphp
 <!-- Cart -->
-@include('cart')
+@include('cart') --}}
 
 @yield('content')
 
-@include('footer')
+<div style="margin-top:100px">
+    @include('footer')
+</div>
 @yield('script')
 </body>
 </html>
