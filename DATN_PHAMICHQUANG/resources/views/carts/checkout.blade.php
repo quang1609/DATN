@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group row" style="width: 85%;">
                             <label class="col-2" for="" style="">Email:</label>
-                            <input type="text" class="form-control col" name="email" value="{{Auth::user()->email}}" disabled>
+                            <input type="text" class="form-control col" name="email" value="{{Auth::user()->email}}">
                         </div>
                         
                         

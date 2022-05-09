@@ -15,7 +15,8 @@ class Cart extends Model
         'customer_id',
         'product_id',
         'pty',
-        'price'
+        'price',
+        'created_at'
     ];
 
     public function product()

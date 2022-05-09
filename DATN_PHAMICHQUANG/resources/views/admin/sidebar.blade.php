@@ -158,6 +158,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/statistical" class="nav-link">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p> Thống kê doanh số
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

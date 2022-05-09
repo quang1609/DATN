@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [MainController::class, 'index'])->name('admin');
         Route::get('main', [MainController::class, 'index']);
 
+        Route::get('statistical', [MainController::class, 'statistical']);
+
         #user
         Route::resource('users', UserController::class)->shallow();
         Route::get('listUser', [UserController::class, 'index'])->name('index');

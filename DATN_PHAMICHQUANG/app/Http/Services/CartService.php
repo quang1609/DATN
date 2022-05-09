@@ -8,6 +8,7 @@ use App\Jobs\SendMail;
 use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -130,7 +131,8 @@ class CartService
                 'customer_id' => $customer_id,
                 'product_id' => $product->id,
                 'pty'   => $carts[$product->id],
-                'price' => $product->price_sale != 0 ? $product->price_sale : $product->price
+                'price' => $product->price_sale != 0 ? $product->price_sale : $product->price,
+                'created_at' => Carbon::now()
             ];
         }
 
