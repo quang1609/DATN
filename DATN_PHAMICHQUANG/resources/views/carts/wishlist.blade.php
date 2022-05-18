@@ -30,7 +30,7 @@
                                                     <img src="{{ asset('images/products/' . $product->thumb) }}" alt="IMG">
                                                 </div>
                                             </td>
-                                            <td class="column-2" >{{ $product->name }}</td>
+                                            <td class="column-2" ><a href="/san-pham/{{ $product->id }}-{{ Str::slug($product->name, '-') }}.html"">{{ $product->name }}</a></td>
                                             <td class="column-3" name="price_end" style="text-align: center">${{ number_format($price, 0, '', '.') }}</td>
                                             
                                             <td class="column-5" style="text-align: center">

@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('add', [ProductController::class, 'create'])->name('create');
             Route::post('add', [ProductController::class, 'store'])->name('store');
             Route::get('list', [ProductController::class, 'index'])->name('index');
+            Route::post('search', [ProductController::class, 'search'])->name('search');
             Route::get('edit/{id}', [ProductController::class, 'show'])->name('edit');
             Route::post('edit/{id}', [ProductController::class, 'update'])->name('update');
             Route::DELETE('destroy', [ProductController::class, 'destroy'])->name('destroy');
@@ -74,6 +75,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('customers/{status}', [\App\Http\Controllers\Admin\CartController::class, 'CusStatus']);
         Route::get('customers/accept/{id}', [\App\Http\Controllers\Admin\CartController::class, 'accept'])->name('cart.accept');
         Route::get('customers/cancel/{id}', [\App\Http\Controllers\Admin\CartController::class, 'cancel'])->name('cart.cancel');
+        Route::get('customers/accept/cancel/{id}', [\App\Http\Controllers\Admin\CartController::class, 'cancelTWO'])->name('cart.accept.cancel');
         Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
     });
 });

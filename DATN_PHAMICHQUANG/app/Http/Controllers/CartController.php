@@ -101,7 +101,6 @@ class CartController extends Controller
         {
             $products[] = Product::where('id', $wl->product_id)->first();
         }
-        // dd($products);
 
         return view('carts.wishlist', [
             'title' => 'Danh sách yêu thích',

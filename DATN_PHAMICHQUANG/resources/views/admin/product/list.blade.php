@@ -1,6 +1,17 @@
 @extends('admin.main')
 
 @section('content')
+<div class="form-group">
+
+    <form action="{{route('product.search')}}" method="post">
+        <input type="search" name="search" class="form-control" />
+        <button class="flex-c-m trans-04 btn btn-primary">
+            Search
+        </button>
+    
+        @csrf
+    </form>
+</div>
     @if (count($products) > 0)
         <table class="table">
             <thead>
@@ -10,8 +21,8 @@
                 <th>Danh Mục</th>
                 <th>Giá Gốc</th>
                 <th>Giá Khuyến Mãi</th>
+                <th>Còn</th>
                 <th>Active</th>
-                <th>Update</th>
                 <th style="width: 100px">&nbsp;</th>
             </tr>
             </thead>
@@ -23,8 +34,8 @@
                     <td>{{ $product->menu->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->price_sale }}</td>
+                    <td>{{ $product->quantity }}</td>
                     <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>
-                    <td>{{ $product->updated_at }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/products/edit/{{ $product->id }}">
                             <i class="fas fa-edit"></i>

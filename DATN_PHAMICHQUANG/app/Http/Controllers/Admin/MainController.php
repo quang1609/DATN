@@ -18,6 +18,15 @@ class MainController extends Controller
 
     public function statistical()
     {
+        $date = date('d-m-y');
+        $firstD = $date . ' 00:00:00';
+        $lastD = $date . ' 23:59:59';
+        $weeks = Cart::where('created_at', '>', $firstD)->where('created_at', '<', $lastD)->get();
+        $totalDay = 0;
+        foreach ($weeks as $wk) {
+            $totalDay += (int)$wk->price*(int)$wk->pty;
+        }
+
         $monday = date('Y-m-d', strtotime('monday this week'));
         $saturday = date('Y-m-d', strtotime('sunday this week'));
         $weeks = Cart::where('created_at', '>', $monday)->where('created_at', '<', $saturday)->get();
@@ -45,6 +54,7 @@ class MainController extends Controller
 
         return view('admin.statistical.list', [
            'title' => 'Thống Kê',
+           'totalDay' => $totalDay,
            'totalWeek' => $totalWeek,
            'totalMonth' => $totalMonth,
            'totalYear' => $totalYear

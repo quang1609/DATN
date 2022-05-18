@@ -83,7 +83,7 @@
 
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2 total_price" name="total_price">
-                                        {{ number_format($total, 0, '', '.')  }} 
+                                        ${{ number_format($total, 0, '', '.')  }} 
                                     </span>
                                 </div>
                             </div>

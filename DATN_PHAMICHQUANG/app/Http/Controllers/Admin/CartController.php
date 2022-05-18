@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
@@ -57,6 +58,13 @@ class CartController extends Controller
         $customer->status = 1;
         $customer->save();
 
+        foreach($customer->carts as $cart)
+        {
+            $product = Product::find($cart->product_id);
+            $product->quantity -= $cart->pty;
+            $product->save();
+        }
+
         return redirect()->back()->with('success','Đơn hàng đã được chấp nhận');
     }
 
@@ -65,6 +73,29 @@ class CartController extends Controller
         $customer = Customer::find($id);
         $customer->status = 2;
         $customer->save();
+
+        foreach($customer->carts as $cart)
+        {
+            $product = Product::find($cart->product_id);
+            $product->quantity += $cart->pty;
+            $product->save();
+        }
+
+        return redirect()->back()->with('success','Đơn hàng đã bị hủy');
+    }
+
+    public function cancelTWO($id)
+    {
+        $customer = Customer::find($id);
+        $customer->status = 2;
+        $customer->save();
+
+        // foreach($customer->carts as $cart)
+        // {
+        //     $product = Product::find($cart->product_id);
+        //     $product->quantity += $cart->pty;
+        //     $product->save();
+        // }
 
         return redirect()->back()->with('success','Đơn hàng đã bị hủy');
     }

@@ -19,9 +19,20 @@ class ProductController extends Controller
 
     public function index()
     {
+
         return view('admin.product.list', [
             'title' => 'Danh Sách Sản Phẩm',
             'products' => $this->productService->get()
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $products = Product::where('name','like', '%'.$request->search.'%')->paginate();
+        
+        return view('admin.product.list', [
+            'title' => 'Danh Sách Sản Phẩm',
+            'products' => $products
         ]);
     }
 
