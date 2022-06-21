@@ -19,7 +19,7 @@
                        <div class="card-body text-center">
                            <i class="icon-shopping-bag"></i>
                            <p class="mt-3">{{__('Doanh Số Tuần Này')}}</p>
-                           <h4><b>{{$totalWeek}} $</b></h4>
+                           <h4><b>{{$totalWeek}} $</b></h4>asd
                        </div>
                    </div>
                </div>
