@@ -28,7 +28,7 @@
                        <div class="card-body text-center">
                            <i class="icon-shopping-bag"></i>
                            <p class="mt-3">{{__('Doanh Số Tháng Này')}}</p>
-                           <h4><b>{{$totalMonth}} $</b></h4>
+                           <h4><b>{{$totalMonth}} $</b></h4>asddasd
                        </div>
                    </div>
                </div>
